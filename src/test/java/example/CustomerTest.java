@@ -9,7 +9,7 @@ import static org.junit.Assert.assertEquals;
 public class CustomerTest {
 
     @Test
-    public void testStatementWithSingleRegularMovie() {
+    public void testGetStatementWithSingleRegularMovie() {
         Movie regularMovie = new Movie("The Godfather", Movie.MovieType.REGULAR);
         Rental rental = new Rental(regularMovie, 3); // 3 days rented
         Customer customer = new Customer("John Doe", List.of(rental));
@@ -20,11 +20,11 @@ public class CustomerTest {
                 Amount owed is 3.5
                 You earned 1 frequent renter points""";
 
-        assertEquals(expected, customer.statement());
+        assertEquals(expected, customer.getStatement());
     }
 
     @Test
-    public void testStatementWithSingleNewReleaseMovie() {
+    public void testGetStatementWithSingleNewReleaseMovie() {
         Movie newRelease = new Movie("Oppenheimer", Movie.MovieType.NEW_RELEASE);
         Rental rental = new Rental(newRelease, 2); // 2 days rented
         Customer customer = new Customer("Alice", List.of(rental));
@@ -35,11 +35,11 @@ public class CustomerTest {
                 Amount owed is 6.0
                 You earned 2 frequent renter points""";
 
-        assertEquals(expected, customer.statement());
+        assertEquals(expected, customer.getStatement());
     }
 
     @Test
-    public void testStatementWithSingleChildrensMovie() {
+    public void testGetStatementWithSingleChildrensMovie() {
         Movie childrensMovie = new Movie("Frozen", Movie.MovieType.CHILDRENS);
         Rental rental = new Rental(childrensMovie, 4); // 4 days rented
         Customer customer = new Customer("Bob", List.of(rental));
@@ -50,11 +50,11 @@ public class CustomerTest {
                 Amount owed is 3.0
                 You earned 1 frequent renter points""";
 
-        assertEquals(expected, customer.statement());
+        assertEquals(expected, customer.getStatement());
     }
 
     @Test
-    public void testStatementWithMultipleRentals() {
+    public void testGetStatementWithMultipleRentals() {
         Movie regularMovie = new Movie("The Godfather", Movie.MovieType.REGULAR);
         Movie newRelease = new Movie("Oppenheimer", Movie.MovieType.NEW_RELEASE);
         Movie childrensMovie = new Movie("Frozen", Movie.MovieType.CHILDRENS);
@@ -73,11 +73,11 @@ public class CustomerTest {
                 Amount owed is 8.0
                 You earned 3 frequent renter points""";
 
-        assertEquals(expected, customer.statement());
+        assertEquals(expected, customer.getStatement());
     }
 
     @Test
-    public void testStatementWithEmptyRentals() {
+    public void testGetStatementWithEmptyRentals() {
         Customer customer = new Customer("John Doe", List.of());
 
         String expected = """
@@ -85,7 +85,7 @@ public class CustomerTest {
                 Amount owed is 0.0
                 You earned 0 frequent renter points""";
 
-        assertEquals(expected, customer.statement());
+        assertEquals(expected, customer.getStatement());
     }
 
     @Test
@@ -100,7 +100,7 @@ public class CustomerTest {
                 Amount owed is 9.0
                 You earned 2 frequent renter points""";
 
-        assertEquals(expected, customer.statement());
+        assertEquals(expected, customer.getStatement());
     }
 
     @Test
@@ -115,6 +115,6 @@ public class CustomerTest {
                 Amount owed is 3.0
                 You earned 1 frequent renter points""";
 
-        assertEquals(expected, customer.statement());
+        assertEquals(expected, customer.getStatement());
     }
 }
