@@ -23,12 +23,12 @@ class Customer {
             result += "\t" + rental.getMovie().getTitle()+ "\t" + rental.getCharge() + "\n";
         }
         //add footer lines
-        result += "Amount owed is " + getTotalAmount() + "\n";
+        result += "Amount owed is " + getTotalCharge() + "\n";
         result += "You earned " + getTotalFrequentRenterPoints() + " frequent renter points";
         return result;
     }
 
-    private double getTotalAmount() {
+    private double getTotalCharge() {
         return rentals.stream()
                 .mapToDouble(Rental::getCharge)
                 .sum();
